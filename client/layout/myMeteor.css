@@ -1,0 +1,49 @@
+/* CSS declarations go here */
+
+/*Top Headline*/
+h1 {
+  text-align: center;
+}
+
+/*The Player*/
+.container {
+  border: 5px solid red;
+  text-align:center;
+  width:100%;
+}
+iframe{
+  width: 200px;
+}
+
+/*Playlist*/
+.playlist{
+  border: 5px solid blue;
+  display: block;
+  float: right;
+  width: 48%;
+}
+
+.playlist li {
+  list-style-type: none;
+}
+
+/*The Search*/
+.list {
+  border: 5px solid green;
+  display: block;
+  float: left;
+  width: 48%;
+}
+
+#search li {
+  font-size: .8em;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+form {
+  text-align: center;
+}

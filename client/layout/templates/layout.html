@@ -1,0 +1,9 @@
+<template name="layout">
+  <div class="list">
+    <ul id="search">
+      {{#each results}}
+        <li draggable="true" ondragstart="drag(event)" id="song"><img src="{{pic}}" alt="{{text}}" /><a href="//www.youtube.com/embed/{{id}}" target="iframe_a">{{text}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
+</template>
