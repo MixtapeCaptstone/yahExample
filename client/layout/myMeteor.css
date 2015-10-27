@@ -5,25 +5,39 @@ h1 {
   text-align: center;
 }
 
+/*The User*/
+.userDis{
+  border: 5px solid purple;
+  /*text-align: center;*/
+  width: 48%;
+  float: right;
+  list-style-type: none;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+}
+
 /*The Player*/
 .container {
   border: 5px solid red;
   text-align:center;
-  width:100%;
+  width:48%;
 }
 iframe{
-  width: 200px;
+  width: 300px;
 }
 
 /*Playlist*/
-.playlist{
+.playListClass{
   border: 5px solid blue;
   display: block;
   float: right;
   width: 48%;
 }
 
-.playlist li {
+.playListClass li {
   list-style-type: none;
 }
 

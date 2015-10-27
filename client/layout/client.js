@@ -1,9 +1,38 @@
-// Songs = new Mongo.Collection('songs');
+Song = new Mongo.Collection('song');
+
+Meteor.subscribe('song');
 
 // METEOR THINGS
-Template.layout.helpers({
+Template.user.helpers({
+  song: function () {
+    console.log(Song.find({}).fetch());
+    return Song.find({});
+  },
+});
+
+Template.searches.helpers({
   results: function () {
     return Session.get('results');
+  }
+});
+
+Template.playlist.events({
+  "drop .playListClass": function (event) {
+    var x = Session.get('tempSave');
+    var y = Session.get('results');
+    console.log(x);
+    console.log(y);
+    // if results.text === li#songID.title
+    y.forEach(function(e) {
+      if(e.id === x){
+        console.log('working', e.text);
+        Meteor.call('addSong', e);
+      }
+    });
+  },
+  "click .saveForm": function () {
+    event.preventDefault();
+    $('.playListClass li').remove();
   }
 });
 
@@ -30,6 +59,9 @@ Template.body.events({
     });
     // Clear the form
     event.target.text.value = '';
+  },
+  "click .delete": function () {
+    Song.remove(this._id);
   }
 });
 
@@ -38,27 +70,30 @@ Meteor.startup(function () {
   // Allows the element to be dropped into a different div
   allowDrop = function (ev) {
     ev.preventDefault();
+    // $("#search li").draggable ({
+    //   drag: drag,
+    //   drop: drop
+    // });
   };
 
   // Allows the 'id' text to be dragged
   drag = function (ev) {
     ev.dataTransfer.setData("text", ev.target.id);
+    var x = ev.srcElement.id;
+    Session.set('tempSave', x);
+    console.log(Session.get('tempSave'));
   };
 
   // This event gets triggered when dropped. Puts the dragged item into the new div.
   drop = function (ev) {
-    console.log(ev);
+    // console.log(ev.path);
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    console.log(data);
+    // $(this).removeAttr('id');
+    // $(this).appendTo('ul #saveMe');
+    // console.log(data);
+    // console.log(ev.target);
+    // ev.target.appendChild(data);
     ev.target.appendChild(document.getElementById(data));
   };
 });
-
-
-
-
-
-  // $("#search li a").draggable ();
-  //
-  // $(".playlist").droppable({activeClass: ".playlist li"});
