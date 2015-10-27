@@ -1,0 +1,10 @@
+<template name="user">
+
+  <div class="userDis">
+    {{#each song}}
+      <button class="delete">&times;</button>
+      <li><img src="{{pic}}" alt="{{text}}" /><a href="//www.youtube.com/embed/{{id}}" target="iframe_a">{{text}}</a></li>
+    {{/each}}
+  </div>
+
+</template>

@@ -1,6 +1,11 @@
+Song = new Mongo.Collection('song');
+
+// Meteor.publish('song', function() {
+//   return Song.find({});
+// });
+
 Meteor.methods( {
   checkYT : function (search) {
-    // search = 'macklemore';
     var url = "https://www.googleapis.com/youtube/v3/search";
     var params = {
         key: apiKey,
@@ -11,5 +16,15 @@ Meteor.methods( {
     };
     var res = Meteor.http.call('GET', url, {params: params});
     return res;
-}
+  },
+  addSong: function (text) {
+    Song.insert({
+      text: text.text,
+      createdAt: new Date(),
+      id: text.id,
+      pic: text.pic
+      // owner: Meteor.userId(),
+      // username: Meteor.user().username
+    });
+  }
 });
