@@ -1,6 +1,7 @@
 <template name="user">
 
-  <div class="userDis">
+  <div class="userDis" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <h2>User Saved Playlist</h2>
     {{#each song}}
       <button class="delete">&times;</button>
       <li><img src="{{pic}}" alt="{{text}}" /><a href="//www.youtube.com/embed/{{id}}" target="iframe_a">{{text}}</a></li>
