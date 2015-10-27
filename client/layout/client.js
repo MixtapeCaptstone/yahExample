@@ -5,7 +5,7 @@ Meteor.subscribe('song');
 // METEOR THINGS
 Template.user.helpers({
   song: function () {
-    console.log(Song.find({}).fetch());
+    // console.log(Song.find({}).fetch());
     return Song.find({});
   },
 });
@@ -16,12 +16,12 @@ Template.searches.helpers({
   }
 });
 
-Template.playlist.events({
-  "drop .playListClass": function (event) {
+Template.user.events({
+  "drop .userDis": function (event) {
     var x = Session.get('tempSave');
     var y = Session.get('results');
-    console.log(x);
-    console.log(y);
+    // console.log(x);
+    // console.log(y);
     // if results.text === li#songID.title
     y.forEach(function(e) {
       if(e.id === x){
@@ -30,10 +30,10 @@ Template.playlist.events({
       }
     });
   },
-  "click .saveForm": function () {
-    event.preventDefault();
-    $('.playListClass li').remove();
-  }
+  // "click .saveForm": function () {
+  //   event.preventDefault();
+  //   $('.playListClass li').remove();
+  // }
 });
 
 Template.body.events({
@@ -94,6 +94,6 @@ Meteor.startup(function () {
     // console.log(data);
     // console.log(ev.target);
     // ev.target.appendChild(data);
-    ev.target.appendChild(document.getElementById(data));
+    // ev.target.appendChild(document.getElementById(data));
   };
 });
